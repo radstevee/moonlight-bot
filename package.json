@@ -10,6 +10,6 @@
     "nodemon": "^2.0.15"
   },
   "name": "excerz-discord-bot",
-  "main": "run.js",
+  "main": "excerz-bot.js",
   "author": "Radsteve"
 }
