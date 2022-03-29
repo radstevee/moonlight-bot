@@ -10,3 +10,4 @@ i did not include my config.json but heres an example:
     "prefix": "prefix here",
 }
 ```
+also the db.js was made by a friend (Cryptolatios#4766 on discord), im too dumb for something like that
