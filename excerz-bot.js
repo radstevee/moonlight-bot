@@ -4,7 +4,7 @@ let chalk = require('chalk');
 let fs = require('fs-extra');
 let db = require('./db');
 console.log(chalk.magenta(`${chalk.yellow(`[Process-Handler]`)} Type \'rs\' to restart.`));
-if(fs.readdirSync('./errlogs').length >= 5) fs.emptydirSync('./errlogs');
+if(fs.existsSync('./errlogs') && fs.readdirSync('./errlogs').length >= 5) fs.emptydirSync('./errlogs');
 
 nodemon({
   script: 'main.js',
