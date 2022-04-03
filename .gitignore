@@ -1,5 +1,5 @@
-/config.json
-/db
-/errlogs
-/node_modules
-/package-lock.json
+config.json
+db/*
+errlogs/*
+node_modules/*
+package-lock.json
