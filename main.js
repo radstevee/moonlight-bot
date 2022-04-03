@@ -25,8 +25,11 @@ client.on('ready', async () => {
 
 client.on('messageCreate', async message => {
     if(!message.content.startsWith(client.config.prefix) || message.author.bot) return;
-    const args = message.content.slice(client.config.prefix.length).split(/ +/);
-    const command = args.shift().toLowerCase();
+    let args = message.content.slice(client.config.prefix.length).split(/ +/);
+    message.args = args;
+    message.client = client;
+    message.Discord = Discord;
+    const command = message.args.shift().toLowerCase();
     if(!(command in client.commands)) return; 
     if(client.commands[command].args && client.commands[command].args == true && !args.join(' ')) {
         await message.channel.send('You need to put arguments for this command to work.');

@@ -3,9 +3,9 @@ module.exports = {
     description: 'Shows info from the dictionary',
     syntax: '<Word>',
     args: true,
-    run:async(message, Discord, client, args) => {
+    run:async(message) => {
         let fetch = require('node-fetch')
-        let word = args.join(' ')
+        let word = message.args.join(' ')
         let req = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}/`).catch(console.log);
         if(req.title) return await message.channel.send('Word couldn\'t be found.').catch(console.log);
         let res = await req.json().catch(console.log);

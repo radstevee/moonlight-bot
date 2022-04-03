@@ -3,7 +3,7 @@ module.exports =  {
     description: 'Bans someone',
     syntax: '<Mention of User>',
     args: true,
-    run: async(message, Discord, client) => {
+    run: async(message) => {
         if (message.member.permissions.has('BAN_MEMBERS')) {
             try {
                 let member = message.mentions.members.first();

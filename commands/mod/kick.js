@@ -3,7 +3,7 @@ module.exports = {
     description: 'Kicks someone',
     syntax: '<Mention of user>',
     args: true,
-    run: async(message, Discord, client) => {
+    run: async(message) => {
         if(message.member.permissions.has('KICK_MEMBERS')) {
             try {
                 let member = message.mentions.members.first();

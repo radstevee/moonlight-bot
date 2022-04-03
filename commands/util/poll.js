@@ -3,10 +3,10 @@ module.exports = {
     description: 'Creates a poll',
     syntax: '<Name of the poll>',
     args: true,
-    run: async(message, client, Discord, args) => {
+    run: async(message) => {
         let msg = await message.channel.send({embeds: [{
             title: `Poll by ${message.author.username}`,
-            description: args.join(' '),
+            description: message.args.join(' '),
             color: '#347ff7'
         }]});
         await msg.react('✅');

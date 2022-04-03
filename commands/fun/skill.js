@@ -3,8 +3,8 @@ module.exports = {
     description: 'Displays how much skill you have (in the skill you specified)',
     syntax: '<Skill>',
     args: true,
-    run:async(message, Discord, client, args) => {
+    run:async(message) => {
         let { randomInt } = require('crypto')
-        message.channel.send(`Your skill in **${args.join(' ')}** is **${randomInt(100)}%**.`)
+        message.channel.send(`Your skill in **${message.args.join(' ')}** is **${randomInt(100)}%**.`)
     }
 }

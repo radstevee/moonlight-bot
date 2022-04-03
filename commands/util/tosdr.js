@@ -3,9 +3,9 @@ module.exports = {
     description: 'Shows the rating of an Application from Terms Of Service; Didn\'t read.',
     syntax: '<Name or Website (Website is more accurate)>',
     args: true,
-    run: async(message, Discord, client, args) => {
+    run: async(message) => {
         let fetch = require('node-fetch');
-        let req = await fetch(`https://api.tosdr.org/search/v4/?query=${args.join(' ')}`);
+        let req = await fetch(`https://api.tosdr.org/search/v4/?query=${message.args.join(' ')}`);
         let res = await req.json();
         function linkStuff(res) {
             let links = (res.parameters.services[0].urls);

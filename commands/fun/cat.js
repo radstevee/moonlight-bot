@@ -2,7 +2,7 @@ module.exports = {
     name: 'cat',
     description: 'Shows a picture or GIF of a cat',
     syntax: '',
-     run:async(message, Discord, client) => {
+     run:async(message) => {
         const fetch = require('node-fetch')
         let req = await fetch('https://api.thecatapi.com/v1/images/search').catch(console.log);
         if(!req) return message.channel.send('An error appeared.');

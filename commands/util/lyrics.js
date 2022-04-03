@@ -3,9 +3,9 @@ module.exports = {
     description: 'Shows the lyrics of a song.',
     syntax: '<Song>',
     args: true,
-    run:async(message, Discord, client, args) => {
+    run:async(message) => {
         const fetch = require('node-fetch');
-        let req = await fetch(`https://api.popcat.xyz/lyrics?song=${args.join(' ').replace(' ', '+').toLowerCase()}`).catch(console.log);
+        let req = await fetch(`https://api.popcat.xyz/lyrics?song=${message.args.join(' ').replace(' ', '+').toLowerCase()}`).catch(console.log);
         if(!req) return message.channel.send('An error appeared.');
         let res = await req.json();
         let embed = {

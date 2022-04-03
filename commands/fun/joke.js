@@ -2,7 +2,7 @@ module.exports = {
     name: 'joke',
     description: 'Shows a random Joke',
     syntax: '',
-    run:async(message, Discord, client, args) => {
+    run:async(message) => {
         const fetch = require('node-fetch');
         let req = await fetch(`https://api.popcat.xyz/joke`).catch(console.log);
         if(!req) return message.channel.send('An error appeared.');

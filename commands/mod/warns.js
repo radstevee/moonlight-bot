@@ -4,11 +4,11 @@ module.exports = {
     description: 'Shows the warns of a user',
     syntax: '<Ping/ID>',
     args: true,
-    run: async(message, client, Discord, args) => {
-        if(args[0].length === 18 && !message.content.includes('<@')) user = message.guild.members.cache.get(user.id).user;
-        if(args[0].startsWith('<@')) user = (message.mentions.members.first()).user;
+    run: async(message) => {
+        if(message.args[0].length === 18 && !message.content.includes('<@')) user = message.guild.members.cache.get(user.id).user;
+        if(message.args[0].startsWith('<@')) user = (message.mentions.members.first()).user;
         if(!db.has(`${user.id}_warns`, `${message.guild.id}_mod`)) return message.channel.send('This user has no warns!');
-        if((db.get(`${user.id}_warns`, `${message.guild.id}_mod`)).length > 25) return message.channel.send('This user has too many warns! Discord only allows 25 embed fields!');
+        if((db.get(`${user.id}_warns`, `${message.guild.id}_mod`)).length > 25) return message.channel.send('This user has too many warns! message.Discord only allows 25 embed fields!');
         let warns = db.get(`${user.id}_warns`, `${message.guild.id}_mod`);
         let embed = {
             title: `${user.tag}'s warns`,

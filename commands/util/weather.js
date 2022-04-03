@@ -3,9 +3,9 @@ module.exports = {
     description: 'Shows the weather of a City',
     syntax: '<City>',
     args: true,
-    run:async(message, Discord, client, args) => {
+    run:async(message) => {
         let fetch = require('node-fetch')
-        let city = args.join(' ')
+        let city = message.args.join(' ')
         let link = `http://api.weatherapi.com/v1/current.json?key=83cb8dbaee974402bee82658221202&q=${city}&aqi=no`
         let req = await fetch(link).catch(console.log);
         if(!req) return await message.channel.send('Couldn\'t find the city.').catch(console.log);

@@ -3,11 +3,11 @@ module.exports = {
     description: '',
     syntax: '<game/video platform>',
     args: true,
-    run:async(message, client, Discord, args) => {
+    run:async(message) => {
         let { DiscordTogether } = require('discord-together');
-        client.discordTogether = new DiscordTogether(client);
+        message.client.DiscordTogether = new DiscordTogether(message.client);
         if(!message.member.voice.channel) return
-        client.discordTogether.createTogetherCode(message.member.voice.channel.id, String(args.join(' '))).then(async invite => {
+        message.client.message.DiscordTogether.createTogetherCode(message.member.voice.channel.id, String(message.args.join(' '))).then(async invite => {
             return message.channel.send(`<${invite.code}>. Click on the link`);
         }).catch(console.log);
     }

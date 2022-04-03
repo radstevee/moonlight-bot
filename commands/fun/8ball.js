@@ -3,7 +3,7 @@ module.exports = {
     description: 'The magic 8-Ball',
     syntax: '<Question>',
     args: true,
-    run:async(message, Discord, client) => {
+    run:async(message) => {
         let answers = ['It is certain.',
         'It is decidedly so.',
         'Without a doubt.',
