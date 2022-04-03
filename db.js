@@ -1,3 +1,4 @@
+//made by a friend
 let fs = require("fs-extra")
 let mdatas = new Map();
 let db = {
