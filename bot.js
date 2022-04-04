@@ -12,9 +12,9 @@ nodemon({
 });
 
 nodemon.on('start', function () {
-  console.log(chalk.green(`${chalk.yellow(`[Process-Handler]`)} Excerz is starting.`));
+  console.log(chalk.green(`${chalk.yellow(`[Process-Handler]`)} Moonlight is starting.`));
 }).on('quit', function () {
-  console.log(chalk.red(`${chalk.yellow(`[Process-Handler]`)} Excerz is quitting.`));
+  console.log(chalk.red(`${chalk.yellow(`[Process-Handler]`)} Moonlight is quitting.`));
   //db.save();
   process.exit();
 });

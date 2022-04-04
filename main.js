@@ -20,7 +20,7 @@ client.commandCategorys.forEach(element => {
 });
 
 client.on('ready', async () => {
-    console.log(chalk.green(`${chalk.yellow(`[Process-Handler]`)} Excerz is online.`));
+    console.log(chalk.green(`${chalk.yellow(`[Process-Handler]`)} Moonlight is online.`));
 });
 
 client.on('messageCreate', async message => {
@@ -35,7 +35,7 @@ client.on('messageCreate', async message => {
     if(client.commands[command].args && client.commands[command].args == true && !args.join(' ')) {
 	let cmd = client.commands[command];
         await message.channel.send('You need to put arguments for this command to work.');
-        return await message.channel.send({embeds: [{title: `Excerz - Help - ${cmd.name}-Command`, fields: [{name: 'Description', value: cmd.description},{name: 'Syntax', value: cmd.syntax}], color: '#0099ff', footer: '<> = Necessary, [] = Optional'}]});
+        return await message.channel.send({embeds: [{title: `Moonlight - Help - ${cmd.name}-Command`, fields: [{name: 'Description', value: cmd.description},{name: 'Syntax', value: cmd.syntax}], color: '#0099ff', footer: '<> = Necessary, [] = Optional'}]});
     };
     await client.commands[command].run(message, client, Discord, args);
     console.log(chalk.cyan(`${chalk.yellow(`[Command-Handler]`)} ${client.commands[command].name} | #${message.channel.name} | ${message.guild.name} | ${args.join(' ') || 'no args'}`));
