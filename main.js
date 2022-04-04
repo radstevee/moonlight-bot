@@ -33,6 +33,7 @@ client.on('messageCreate', async message => {
     const command = message.args.shift().toLowerCase();
     if(!(command in client.commands)) return; 
     if(client.commands[command].args && client.commands[command].args == true && !args.join(' ')) {
+	let cmd = client.commands[command];
         await message.channel.send('You need to put arguments for this command to work.');
         return await message.channel.send({embeds: [{title: `Excerz - Help - ${cmd.name}-Command`, fields: [{name: 'Description', value: cmd.description},{name: 'Syntax', value: cmd.syntax}], color: '#0099ff', footer: '<> = Necessary, [] = Optional'}]});
     };
