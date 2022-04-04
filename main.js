@@ -4,7 +4,7 @@ let client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discor
 let chalk = require('chalk'); 
 let db = require('./db');
 db.init();
-client.config = require('./config.json'); 
+client.config = require('../excerz-config.json'); 
 client.commands = {}; 
 client.commandCategorys = fs.readdirSync('./commands/'); 
 
