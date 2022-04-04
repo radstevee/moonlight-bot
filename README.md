@@ -2,6 +2,12 @@
 so yeah, this is my bot.
 please dont judge me for horrible code, im bad at javascript xD
 
+
+
+at this rate of new features its gonna be the best discord bot in (calculating.... ) 30 days.
+
+
+
 also the db.js was made by a friend (Cryptolatios#4766 on discord), im too dumb for something like that
 
 # setup
