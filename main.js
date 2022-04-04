@@ -1,6 +1,6 @@
 let Discord = require('discord.js');
 let fs = require('fs-extra'); 
-let client = new Discord.Client({ intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES] }); 
+let client = new Discord.Client({ intents: new Discord.Intents(32767) }); 
 let chalk = require('chalk'); 
 let db = require('./db');
 db.init();
@@ -39,6 +39,26 @@ client.on('messageCreate', async message => {
     };
     await client.commands[command].run(message, client, Discord, args);
     console.log(chalk.cyan(`${chalk.yellow(`[Command-Handler]`)} ${client.commands[command].name} | #${message.channel.name} | ${message.guild.name} | ${args.join(' ') || 'no args'}`));
+});
+
+client.on('guildMemberAdd', async member => {
+    let channel = db.get(member.guild.id, 'welcome-channels');
+    if(!channel) return;
+    let channelObj = member.guild.channels.cache.get(channel);
+    if(!channelObj) return;
+    let message = db.get(member.guild.id, 'welcome-messages');
+    if(!message) return;
+    channelObj.send(message.replace(/{user}/g, member.user.tag).replace(/{server}/g, member.guild.name));
+});
+
+client.on('guildMemberRemove', async member => {
+    let channel = db.get(member.guild.id, 'leave-channels');
+    if(!channel) return;
+    let channelObj = member.guild.channels.cache.get(channel);
+    if(!channelObj) return;
+    let message = db.get(member.guild.id, 'leave-messages');
+    if(!message) return;
+    channelObj.send(message.replace(/{user}/g, member.user.tag).replace(/{server}/g, member.guild.name));
 });
 
 process.on('uncaughtException', err => {
