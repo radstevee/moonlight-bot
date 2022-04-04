@@ -24,8 +24,9 @@ client.on('ready', async () => {
 });
 
 client.on('messageCreate', async message => {
-    if(!message.content.startsWith(client.config.prefix) || message.author.bot) return;
-    let args = message.content.slice(client.config.prefix.length).split(/ +/);
+    let prefix = db.get(message.guild.id, 'prefixes') || client.config.prefix;
+    if(!message.content.startsWith(prefix) || message.author.bot) return;
+    let args = message.content.slice(prefix.length).split(/ +/);
     message.args = args;
     message.client = client;
     message.Discord = Discord;
