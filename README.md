@@ -1,4 +1,5 @@
-# excerz bot
+# moonlight bot
+IMPORTANT: the bot will be renamed to 'Moonlight' so yeah
 so yeah, this is my bot.
 please dont judge me for horrible code, im bad at javascript xD
 
@@ -16,16 +17,16 @@ install the packages with
 npm install
 ``` 
 
-and for all the linux users run
+and for all the linux/macos users run
 
 ```
-chmod +x excerz-bot.js
+chmod +x bot.js
 
-./excerz-bot.js
+./bot.js
 ```
 
 on windows just run 
 
 ```
-node excerz-bot.js
+node bot.js
 ```
