@@ -15,10 +15,13 @@ nodemon.on('start', function () {
   console.log(chalk.green(`${chalk.yellow(`[Process-Handler]`)} Moonlight is starting.`));
 }).on('quit', function () {
   console.log(chalk.red(`${chalk.yellow(`[Process-Handler]`)} Moonlight is quitting.`));
-  //db.save();
   process.exit();
 });
 
-setInterval(() => {
-  db.save();
-}, 6000000);
+
+/*
+* if i uncomment this the db always gets deleted on restart for some reason
+* setInterval(() => {
+*   db.save();
+* }, 6000000);
+*/
