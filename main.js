@@ -28,8 +28,9 @@ client.on('messageCreate', async message => {
     if(!message.content.startsWith(prefix) || message.author.bot) return;
     let args = message.content.slice(prefix.length).split(/ +/);
     message.args = args;
-    message.client = client;
-    message.Discord = Discord;
+    message.modules = {Discord: Discord, fs: fs, db: db, chalk: chalk};
+    message.prefix = prefix;
+    message.date = new Date();
     const command = message.args.shift().toLowerCase();
     if(!(command in client.commands)) return; 
     if(client.commands[command].args && client.commands[command].args == true && !args.join(' ')) {
@@ -37,7 +38,7 @@ client.on('messageCreate', async message => {
         await message.channel.send('You need to put arguments for this command to work.');
         return await message.channel.send({embeds: [{title: `Moonlight - Help - ${cmd.name}-Command`, fields: [{name: 'Description', value: cmd.description},{name: 'Syntax', value: cmd.syntax}], color: '#0099ff', footer: '<> = Necessary, [] = Optional'}]});
     };
-    await client.commands[command].run(message, client, Discord, args);
+    await client.commands[command].run(message);
     console.log(chalk.cyan(`${chalk.yellow(`[Command-Handler]`)} ${client.commands[command].name} | #${message.channel.name} | ${message.guild.name} | ${args.join(' ') || 'no args'}`));
 });
 

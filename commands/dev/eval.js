@@ -8,9 +8,9 @@ module.exports = {
         if(message.author.id != ownerId) return message.channel.send('You\'re not the owner.');
         try {
             let output = eval(message.args.join(' '));
-            if(output != null || output != undefined) message.channel.send(output);
+            message.channel.send(output || 'done');
         } catch(err) {
-            message.channel.send('An error appeared.');
+            message.channel.send(`An error appeared: ${err}`);
             console.log(`[Eval-Command] Error: ${err}`);
         }
     }
